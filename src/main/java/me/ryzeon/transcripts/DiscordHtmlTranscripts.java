@@ -5,7 +5,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import java.awt.*;
 import java.io.*;
 import java.net.URL;;
 import java.time.format.DateTimeFormatter;
@@ -34,12 +33,8 @@ public class DiscordHtmlTranscripts {
         return instance;
     }
 
-    public void createTranscript(TextChannel channel) throws IOException {
-        createTranscript(channel, null);
-    }
-
-    public void createTranscript(TextChannel channel, String fileName) throws IOException {
-        channel.sendFile(generateFromMessages(channel.getIterableHistory().stream().collect(Collectors.toList())), fileName != null ? fileName : "transcript.html").queue();
+    public InputStream createTranscript(TextChannel channel) throws IOException {
+        return generateFromMessages(channel.getIterableHistory().stream().collect(Collectors.toList()));
     }
 
     public InputStream generateFromMessages(Collection<Message> messages) throws IOException {
