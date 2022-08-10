@@ -1,9 +1,10 @@
 package me.ryzeon.transcripts;
 
+import lombok.experimental.UtilityClass;
+
 import java.awt.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import lombok.experimental.UtilityClass;
 
 /**
  * Created by Ryzeon
