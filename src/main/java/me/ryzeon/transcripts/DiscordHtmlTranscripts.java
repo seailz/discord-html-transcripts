@@ -1,6 +1,5 @@
 package me.ryzeon.transcripts;
 
-import lombok.var;
 import net.dv8tion.jda.api.entities.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -44,7 +43,7 @@ public class DiscordHtmlTranscripts {
     }
 
     public InputStream generateFromMessages(Collection<Message> messages) throws IOException {
-        File htmlTemplate = findFile("template.html");
+        File htmlTemplate = new File("html/template.html");
         if (messages.isEmpty()) {
             throw new IllegalArgumentException("No messages to generate a transcript from");
         }
@@ -77,10 +76,10 @@ public class DiscordHtmlTranscripts {
                 Element reference = document.createElement("div");
                 reference.addClass("chatlog__reference");
 
-                var referenceMessage = message.getReferencedMessage();
+                Message referenceMessage = message.getReferencedMessage();
                 User author = referenceMessage.getAuthor();
                 Member member = channel.getGuild().getMember(author);
-                var color = Formatter.toHex(Objects.requireNonNull(member.getColor()));
+                String color = Formatter.toHex(Objects.requireNonNull(member.getColor()));
 
                 //        System.out.println("REFERENCE MSG " + referenceMessage.getContentDisplay());
                 reference.html("<img class=\"chatlog__reference-avatar\" src=\""
@@ -105,7 +104,7 @@ public class DiscordHtmlTranscripts {
                 messageGroup.appendChild(reference);
             }
 
-            var author = message.getAuthor();
+            User author = message.getAuthor();
 
             Element authorElement = document.createElement("div");
             authorElement.addClass("chatlog__author-avatar-container");
@@ -182,7 +181,7 @@ public class DiscordHtmlTranscripts {
                     Element attachmentsDiv = document.createElement("div");
                     attachmentsDiv.addClass("chatlog__attachment");
 
-                    var attachmentType = attach.getFileExtension();
+                    String attachmentType = attach.getFileExtension();
                     if (imageFormats.contains(attachmentType)) {
                         //          System.out.println("UNGA IMAGEN WEBON XD");
                         Element attachmentLink = document.createElement("a");
