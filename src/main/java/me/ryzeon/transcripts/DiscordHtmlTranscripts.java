@@ -73,7 +73,7 @@ public class DiscordHtmlTranscripts {
 
                 Message referenceMessage = message.getReferencedMessage();
                 User author = referenceMessage.getAuthor();
-                Member member = channel.getGuild().getMember(author);
+                Member member = channel.getGuild().getMemberById(author.getId());
                 String color = Formatter.toHex(Objects.requireNonNull(member.getColor()));
 
                 //        System.out.println("REFERENCE MSG " + referenceMessage.getContentDisplay());
