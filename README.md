@@ -1,3 +1,5 @@
+# discord.jv version of this project on `feature/discord.jv` branch
+
 # Discord (JDA) HTML Transcripts
 [![Discord](https://img.shields.io/discord/555474311637499955?label=discord)](https://discord.gg/rf5qN7C)
 [![](https://jitpack.io/v/Ryzeon/discord-html-transcripts.svg)](https://jitpack.io/#Ryzeon/discord-html-transcripts)
